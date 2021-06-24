@@ -1,0 +1,34 @@
+<%- include ('./includes/head.ejs') %>
+<%- include ('./includes/nav.ejs') %>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" action="/blog/<% if (editing) { %>edit/<%= id %><% } %>" method="POST">
+          <div class="form-floating mb-3">
+            Blog Name
+            <input 
+            style="padding-top: 10px";
+            type="text" name="title" class="form-control" id="floatingInput-newBlog" placeholder="name@example.com" value="<% if (editing) { %><%= title %><% } %>">
+          </div>
+          Description
+          <div class="form-floating mb-3">
+            <textarea name="description"
+            style="margin-top: 0px; margin-bottom: 0px; height: 325px;"
+            class="form-control" id="floatingPassword-newBlog" placeholder="Password">
+            <% if (editing) { %><%= description %><% } %></textarea>
+          </div>
+          <div class="checkbox mb-3">
+          </div>
+          
+          <% if (editing) { %>
+          <button class="w-100 btn btn-lg btn-warning" type="submit" id="button-update">Update Blog</button>
+          <% } else {%>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" id="button-add">Add Blog</button>
+          <% }%>
+          <hr class="my-4">
+        </form>
+      </div>
+    </div>
+  </div>
+
+<%- include ('./includes/foot.ejs') %>

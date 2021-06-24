@@ -1,0 +1,30 @@
+<%- include ('./includes/head.ejs') %>
+<%- include ('./includes/nav.ejs') %>
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+  <% blogs.forEach(function(blog) {%>
+    <div class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+      </div>
+      <div>
+        <h2><%=blog.title %></h2>
+        <p><%=blog.description %></p>
+        <p><%=blog.creationDate %></p>
+        <p><%=blog.lastUpdatedDate %></p>
+        <div class="d-inline p-2">
+          <a href="http://localhost:<%=  process.env.APPLICATION_PORT%>/blog/edit/<%=blog._id %>" class="btn btn-primary">
+            Edit
+          </a>
+        </div>
+        <div class="d-inline p-2">
+          <form class="" action="http://localhost:<%=  process.env.APPLICATION_PORT%>/blog/delete/<%=blog._id %>" method="POST">
+            <button class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  <% })%>
+  </div>
+
+    
+<%- include ('./includes/foot.ejs') %>
